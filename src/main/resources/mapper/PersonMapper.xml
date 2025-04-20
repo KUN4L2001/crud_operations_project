@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.crud_operations_project_backend.dao.PersonDao">
+    <select id="getAllPerson" resultType="com.example.crud_operations_project_backend.dto.Person">
+        SELECT *
+        FROM person
+    </select>
+
+    <insert id="createPerson" parameterType="com.example.crud_operations_project_backend.dto.Person">
+        INSERT INTO person (id,name,email,age)
+        VALUES (#{person.id},#{person.name},#{person.email},#{person.age})
+    </insert>
+
+    <select id="findPersonById" resultType="com.example.crud_operations_project_backend.dto.Person">
+        SELECT *
+        FROM person
+        WHERE id=#{id}
+    </select>
+
+    <update id="updatePerson" parameterType="com.example.crud_operations_project_backend.dto.Person">
+        UPDATE person
+        SET name=#{updatedPerson.name}, email=#{updatedPerson.email}, age=#{updatedPerson.age}
+        WHERE id=#{updatedPerson.id}
+    </update>
+
+    <delete id="deletePersonById">
+        DELETE
+        FROM person
+        WHERE id=#{id}
+    </delete>
+</mapper>
